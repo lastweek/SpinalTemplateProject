@@ -9,6 +9,7 @@ import spinal.lib.bus.amba4.axi._
  * Demonstrate axi4 usage
  * Check clio
  */
+/*
 case class testAXI4Top() extends Component {
   val io = new Bundle {
     val axi_x = Axi4(Axi4Config(addressWidth  = 32,
@@ -21,6 +22,7 @@ case class testAXI4Top() extends Component {
    foo := 1;
   }
 }
+*/
 
 /*
  * Demonstrates how to state machine
@@ -229,6 +231,7 @@ object top_module {
       )
     ).generate(new testStateMachineTop)
 
+/*
     SpinalConfig(
       mode = Verilog,
       targetDirectory = "generated_rtl",
@@ -239,5 +242,6 @@ object top_module {
         resetActiveLevel = LOW
       )
     ).generate(new testAXI4Top)
+*/
   }
 }
