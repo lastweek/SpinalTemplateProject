@@ -20,3 +20,8 @@ These files are adapted from SpinalWorkshop.
 1. add test file to `src/test/scala/testPackage/*.scala`.
 2. within `sbt`, run `test`.
 3. TODO: fill the scala file, how to deal with multiple DUTs? (DUT is the one object passed to generateVerilog, i guess)
+
+- Install Verilator and several Jave dev package before starts
+- Within simulation code, if we want to access variable within a DUT,
+  that various should be marked as `simPublic()`.
+  See here: https://spinalhdl.github.io/SpinalDoc-RTD/SpinalHDL/Simulation/signal.html.

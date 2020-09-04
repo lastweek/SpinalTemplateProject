@@ -1,6 +1,7 @@
 package testPackage
 
 import spinal.core._
+import spinal.core.sim._
 import spinal.lib._
 import spinal.lib.fsm._
 import spinal.lib.bus.amba4.axi._
@@ -35,8 +36,9 @@ case class testStateMachineTop() extends Component {
     val result = out Bool
   }
 
+  val counter = Reg(UInt(8 bits)) init (0) simPublic();
+
   val fsm = new StateMachine {
-    val counter = Reg(UInt(8 bits)) init (0);
     io.result := False
 
     val state_A = new State with EntryPoint
