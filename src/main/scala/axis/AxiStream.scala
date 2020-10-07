@@ -1,4 +1,4 @@
-package testPackage
+package axis
 
 import spinal.core._
 import spinal.lib._
@@ -39,6 +39,7 @@ case class AxiStreamPayload(config: AxiStreamConfig) extends Bundle {
 }
 
 object AxiStream {
+  // TODO what this is for?
   def apply(config: AxiStreamConfig, bitStream: Stream[Fragment[Bits]]): Stream[Fragment[AxiStreamPayload]] = {
     val stream = Stream Fragment AxiStreamPayload(config)
 

@@ -194,29 +194,6 @@ class testTop(width: Int) extends Component {
   }
 }
 
-/*
- * Interface with AxiStream!
- */
-case class TestAxiStream() extends Component {
-  val io = new Bundle {    
-    val dataWidth = 512
-    val tmpConfig = AxiStreamConfig(dataWidth = dataWidth, keepWidth = dataWidth / 8)
-    
-    val in = slave Stream Fragment(AxiStreamPayload(tmpConfig))
-    //val out = master Stream Fragment(AxiStreamPayload(tmpConfig))
-  }
-
-  /*
-   * TODO
-   * how to read
-   * how to parse last, keep, etc
-   *
-   * how to write to output and construct stuff
-   */
-  val tmp = io.in
-  tmp.ready := True
-}
-
 object top_module {
   def main(args: Array[String]) {
     val freq = 100 MHz
@@ -256,20 +233,6 @@ object top_module {
       )
     ).generate(new testStateMachineTop)
 
-
-    /*
-     * Generate the StateMachine module
-     */
-    SpinalConfig(
-      mode = Verilog,
-      targetDirectory = "generated_rtl",
-      defaultClockDomainFrequency = FixedFrequency(freq),
-      defaultConfigForClockDomains = ClockDomainConfig(
-        clockEdge = RISING,
-        resetKind = ASYNC,
-        resetActiveLevel = LOW
-      )
-    ).generate(new TestAxiStream)
 
 /*
     SpinalConfig(
