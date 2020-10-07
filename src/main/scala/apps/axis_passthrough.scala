@@ -1,10 +1,10 @@
 package apps
 
-import axis._
+import lib._
 import spinal.core._
 import spinal.lib._
 
-case class AxisPassthrough(dataWidth: Int) extends Component {
+case class AxisPassthrough(dataWidth: Int) extends Component with RenameIO {
   val io = new Bundle {
     val tmpConfig = AxiStreamConfig(dataWidth = dataWidth, keepWidth = dataWidth / 8)
     val in  = slave Stream Fragment(AxiStreamPayload(tmpConfig))
@@ -12,6 +12,8 @@ case class AxisPassthrough(dataWidth: Int) extends Component {
   }
 
   io.out << io.in
+
+  addPrePopTask(renameIO)
 }
 
 object AxisPassthroughGen {

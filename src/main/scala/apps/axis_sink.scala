@@ -1,9 +1,8 @@
 package apps
 
-import axis._
+import lib._
 import spinal.core._
 import spinal.lib._
-
 
 case class AxisSink(dataWidth: Int) extends Component {
   val io = new Bundle {
